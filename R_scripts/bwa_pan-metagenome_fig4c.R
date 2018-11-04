@@ -4,17 +4,12 @@ library(data.table)
 library(ggplot2)
 library(reshape2)
 library(RColorBrewer)
-library(FactoMineR)
-library(pheatmap)
 library(grid)
 library(stats)
 
-# load workspace
-setwd("~/Documents/ESPOD/Analyses/Assemb_Binning/MetaSpecies_revision/read_mapping/bwa/")
-
 # load files
-bwa.prev = read.csv("bwa_presence-absence.csv", row.names=1)
-metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx")
+bwa.prev = read.csv("bwa_presence-absence.csv", row.names=1) # csv file with presence/absence binary matrix
+metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx") # metadata file for each run
 metadata = as.data.frame(metadata.raw[,c("pub_state", "pub_disease", "pub_disease_secondary", "pub_agestrat", 
                                          "pub_antibio", "country", "continent")])
 rownames(metadata) = metadata.raw$run_accession
@@ -67,10 +62,8 @@ dset.line = rbind(dset.asia, dset.europe, dset.namerica, dset.africa, dset.samer
 dset.nea = dset.line[which(dset.line$Origin != "North America" & dset.line$Origin != "Europe" 
                            & dset.line$Origin != "Asia"),] # just NEA
 
-# plot linegraphs with error bars
+# plot graph with asymptotic regression
 print(ggplot(dset.nea, aes(x=Samples, y=Species, colour=Origin))
-      #+ geom_errorbar(aes(ymin=Species-SD, ymax=Species+SD), size=0.1, width=0.5)
-      #+ geom_line(linetype="dotted", size=1, alpha = 0.5)
       + geom_smooth(method="nls", formula=y~SSasymp(x, Asym, R0, lrc), se=F, size=0.35)
       + geom_point(size=0.2)
       + theme_bw()
@@ -79,15 +72,9 @@ print(ggplot(dset.nea, aes(x=Samples, y=Species, colour=Origin))
                                     "Oceania"))
       + ylab("Number of UMGS detected")
       + xlab("Number of samples")
-      #+ scale_x_continuous(breaks=c(0,200,400,600,800,1000,1200,1400))
-      #+ scale_y_continuous(breaks=c(0,5000,10000,15000,20000,25000,30000))
       + theme(legend.title = element_blank())
       + theme(legend.text = element_text(size = 10))
       + theme(axis.title.y = element_text(size=14))
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.title.x = element_text(size=14))
       + theme(axis.text.x = element_text(size=12)))
-
-# non-linear regression (asymptotic)
-nls.dset = dset.namerica
-print(summary(nls(nls.dset$Species ~ SSasymp(nls.dset$Samples, Asym, R0, lrc), data = nls.dset)))

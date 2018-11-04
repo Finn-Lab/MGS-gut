@@ -1,28 +1,13 @@
 # load libraries
 library(ggplot2)
-library(ggrastr)
-library(VennDiagram)
 library(reshape2)
 
-# setup input files and datasets
-setwd("~/Documents/ESPOD/Analyses/Project_UMGS/MetaSpecies_revision//quality_metrics/")
-options(scipen=999)
-
-# load checkm results and rRNA counts
-dset = read.delim("checkm_final.tab", row.names=1)
-rRNAs.raw = read.delim("rRNAs_id_mags-high.tab", header=FALSE)
-rRNAs = acast(rRNAs.raw, V1 ~ V2)
-colnames(rRNAs) = c("5S", "23S", "16S")
-tRNAs = read.delim("tRNAs_id_mags-high.tab", header=FALSE, row.names=1)
-colnames(tRNAs) = "tRNAs"
-RNAs = merge(rRNAs, tRNAs, by="row.names")
-rownames(RNAs) = RNAs$Row.names
-RNAs = RNAs[,-1]
-dset = merge(dset, RNAs, by="row.names", all.x=TRUE)
+# load input
+dset = read.delim("mags-quality.tab", row.names=1) # load file with checkm quality and RNA counts
 
 # add quality score
 dset$checkm_qs = dset$complet-(5*dset$cont)
-#dset = dset[grep("k__Bacteria", dset$taxon),] # bacteria
+dset = dset[grep("k__Bacteria", dset$taxon),] # bacteria
 
 # classification for colouring
 dset$class_qs = rep(0,nrow(dset))
@@ -79,8 +64,3 @@ print(ggplot(df_stack, aes(x=quality, y=as.numeric(as.character(value)), fill=va
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.title.x = element_blank())
       + theme(axis.text.x = element_text(size=12)))
-
-# saving source data
-#source = dset[,1:3]
-#colnames(source) = c("Bin", "Completeness", "Contamination")
-#write.csv(source, file="../figures/Extended_Data_Figure_2_source.csv", row.names=FALSE, quote=FALSE)

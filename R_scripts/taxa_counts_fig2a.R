@@ -7,8 +7,7 @@ library(gdata)
 library(Rmisc)
 
 # set working directory and load large data
-setwd("~/Documents/ESPOD/Analyses/Project_UMGS/MetaSpecies_revision/taxonomy/")
-dset = read.table("taxacounts_umgs-all.tab", sep="\t") # UMGS all
+dset = read.table("taxacounts_umgs-all.tab", sep="\t") # load UMGS counts per taxon
 colnames(dset) = c("Rank", "Taxon", "Counts")
 dset$Percentage = dset$Counts/dset[dset$Rank=="Kingdom","Counts"]*100
 
@@ -45,10 +44,9 @@ print(dset[which(dset$Rank == "Phylum"),])
 print(ggplot(new.dset, aes(x=Rank, y=Percentage, fill=Taxon)) 
       + geom_bar(stat="identity", colour="black", alpha=0.5, size=0.2)
       + theme_bw()
-      + ylab("Relative abundance (%)")
+      + ylab("Proportion (%)")
       + scale_fill_manual(values=as.vector(new.dset$Colour))
       + scale_x_discrete(limits=ranks_selected)
-      #+ guides(fill=FALSE) # removes legend
       + ylim(0,100)
       + theme(axis.title.y = element_text(size=18))
       + theme(axis.text.y = element_text(size=15))

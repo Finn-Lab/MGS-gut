@@ -1,17 +1,13 @@
 # load libraries
-library(readxl)
 library(data.table)
 library(ggplot2)
 library(reshape2)
 library(RColorBrewer)
-library(FactoMineR)
-library(pheatmap)
 library(grid)
 
-# load workspace
-setwd("~/Documents/ESPOD/Analyses/Assemb_Binning/MetaSpecies_revision/functions/antiSMASH/")
-as.umgs = read.delim("antismash_bgc_umgs.tab", row.names=1, header=FALSE)
-as.hgr = read.delim("antismash_bgc_hgr.tab", row.names=1, header=FALSE)
+# load input
+as.umgs = read.delim("antismash_bgc_umgs.tab", row.names=1, header=FALSE) # tabular file with antismash counts
+as.hgr = read.delim("antismash_bgc_hgr.tab", row.names=1, header=FALSE) # tabular file with antismash counts
 colnames(as.umgs) = c("Total_BGC", "Known_BGC")
 colnames(as.hgr) = c("Total_BGC", "Known_BGC")
 
@@ -48,11 +44,6 @@ umgs.tax = read.delim("../../taxonomy/taxonomy_umgs-all.tab", header=FALSE)
 colnames(umgs.tax) = c("Name", "Tax", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "UMGS")
 hgr.tax = read.delim("../../taxonomy/taxonomy_hgr.tab", header=FALSE)
 colnames(hgr.tax) = c("Name", "Tax", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
-
-# filter data by phylum
-#phylum = "Firmicutes"
-#cats.hgr = cats.hgr[which(cats.hgr$Name %in% as.vector(hgr.tax[which(hgr.tax$Phylum == phylum),"Name"])),]
-#cats.umgs = cats.umgs[which(cats.umgs$Name %in% as.vector(umgs.tax[which(umgs.tax$Phylum == phylum),"Name"])),]
 
 # UMGS
 cats.umgs.dset = data.frame(cbind(cats, rep(0, length(cats))), stringsAsFactors = FALSE)
@@ -98,9 +89,3 @@ print(ggplot(cats.all, aes(x=Category, y=as.numeric(Count), fill=Genome))
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.title.y = element_text(size=14))
       + theme(axis.text.x = element_text(face="plain", size=12, angle=45, hjust = 1, vjust=1)))
-
-# save results table
-umgs.summ = acast(cats.umgs, Name ~ Category, value.var = "Count")
-umgs.summ = cbind(rownames(umgs.summ), umgs.summ)
-colnames(umgs.summ) = c("Genome", colnames(umgs.summ)[-1])
-#write.csv(umgs.summ, file="UMGS_antiSMASH.csv", quote=FALSE, row.names=FALSE)

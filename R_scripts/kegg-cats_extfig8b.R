@@ -7,7 +7,6 @@ library(FactoMineR)
 library(CoDaSeq)
 
 # set working directory and read input files
-setwd("~/Documents/ESPOD/Analyses/Assemb_Binning/MetaSpecies_revision/functions/")
 kegg.dset = read.csv("kegg/kegg_summary.csv", row.names=1, check.names=FALSE)
 kegg.names = read.delim("kegg/KEGG_orthology_simple.tab", sep="\t", row.names=1, check.names=FALSE, quote="")
 
@@ -32,11 +31,9 @@ res.plot = res.eff
 res.hgr = res.plot[which(res.plot$effect < 0),]
 res.umgs = res.plot[which(res.plot$effect > 0),]
 res.hgr = data.frame(sort(table(droplevels(res.hgr$`Functional category`))))
-#res.hgr = data.frame(sort(table(droplevels(res.hgr$Pathway))))
 res.hgr$Prop = res.hgr$Freq/sum(res.hgr$Freq)*100
 res.hgr$Type = "HGR"
 res.umgs = data.frame(sort(table(droplevels(res.umgs$`Functional category`))))
-#res.umgs = data.frame(sort(table(droplevels(res.umgs$Pathway))))
 res.umgs$Prop = res.umgs$Freq/sum(res.umgs$Freq)*100
 res.umgs$Type = "UMGS"
 res.cats = rbind(res.hgr, res.umgs)
@@ -47,7 +44,6 @@ print(ggplot(res.cats, aes(x=Var1, y=Freq, fill=Type))
       + theme_bw()
       + coord_flip()
       + ylab("Number of enriched genes")
-      #+ ylab("Proportion of genes (%)")
       + theme(axis.title.x = element_text(size=12))
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.text.x = element_text(size=12))

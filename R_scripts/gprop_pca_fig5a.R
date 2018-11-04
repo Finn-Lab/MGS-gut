@@ -5,22 +5,14 @@ library(ggplot2)
 library(vegan)
 
 # load summary files
-setwd("~/Documents/ESPOD/Analyses/Assemb_Binning/MetaSpecies_revision/functions/genome_properties/data")
 file_list = Sys.glob("*gp.tab")
 gprop.annot = read.delim(file_list[1], sep="\t", header=FALSE)[,1:2]
 
 # load and prepare taxonomy file
-tax.hgr = read.delim("../../../taxonomy/taxonomy_hgr.tab", header = FALSE, row.names=1)
-tax.hgr$Genome = "HGR" 
-tax.mgs = read.delim("../../../taxonomy/taxonomy_umgs-hq.tab", header = FALSE, row.names=1)
-tax.mgs = tax.mgs[,1:7]
-tax.mgs$Genome = "UMGS (high quality)"
-tax.qs50 = read.delim("../../../taxonomy/taxonomy_umgs-mq.tab", header = FALSE, row.names=1)
-tax.qs50 = tax.qs50[,1:7]
-tax.qs50$Genome = "UMGS (medium quality)"
-tax = rbind(tax.hgr, tax.mgs, tax.qs50)
+tax = read.delim("taxonomy_all.tab", header = FALSE, row.names=1)
 colnames(tax) = c("Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Genome")
 
+# make sure gprop object is not in environment
 if (exists("gprop")){
   rm(gprop)
 }
@@ -73,9 +65,7 @@ phy_type = c("#004cce", "#059633", "#bdf2c1", "#CB1414", "#C3C00E",
 gen_type = c("steelblue", "red3", "orange") # genome type
 
 # principal component analysis
-#Phylum = "Firmicutes"
-#dset.plot = dset.tax[which(dset.tax$Phylum == Phylum),] # filter by phylum
-dset.plot = dset.tax # all
+dset.plot = dset.tax
 pca = PCA(dset.plot[,2:1200], scale.unit = FALSE, graph=FALSE)
 pcs = as.data.frame(pca$ind$coord)
 pc1_var = round(pca$eig[1,2],1)
@@ -83,10 +73,8 @@ pc2_var = round(pca$eig[2,2],1)
 gg.dset = data.frame(Sample=dset.plot$Row.names, PC1=pcs$Dim.1, PC2=pcs$Dim.2, 
                      Genome=dset.plot$Genome, Phylum=dset.plot$Phylum)
 print(ggplot(gg.dset, aes(x=PC1, y=PC2, colour=Phylum, shape=Genome))
-#print(ggplot(gg.dset, aes(x=PC1, y=PC2, colour=Genome, shape=Genome))
       + geom_point(size=1, alpha=0.8)
       + scale_color_manual(name="Phylum", values=phy_type, na.value="black")
-      #+ scale_color_manual(name="Genome", values=gen_type, na.value="black")
       + scale_shape_manual(name="Genome", values=c(0,4,16))
       + guides(colour = guide_legend(override.aes = list(size=5, alpha=0.8)))
       + theme_bw()
@@ -102,15 +90,5 @@ print(ggplot(gg.dset, aes(x=PC1, y=PC2, colour=Phylum, shape=Genome))
 dset.anosim = dset.tax[which(!is.na(dset.tax$Phylum)),]
 rownames(dset.anosim) = dset.anosim$Row.names
 dset.anosim = dset.anosim[,2:1200]
-res.phyl = anosim(dset.anosim, dset.tax$Phylum[which(!is.na(dset.tax$Phylum))], distance="gower") # phylum
+res.phyl = anosim(dset.anosim, dset.tax$Phylum[which(!is.na(dset.tax$Phylum))], distance="gower")
 print(res.phyl)
-
-# calculate anosim for specific phylum by genome type
-phylum = "Firmicutes"
-dset.anosim = dset.tax[which(dset.tax$Phylum == phylum),] # select phylum
-rownames(dset.anosim) = dset.anosim$Row.names
-dset.anosim = dset.anosim[,2:1200]
-genome.type = gsub("UMGS.*", "UMGS", dset.tax[which(dset.tax$Phylum == phylum),"Genome"])
-res.genomes = anosim(dset.anosim, genome.type, distance="gower")
-cat(phylum,"\n")
-print(res.genomes)

@@ -5,19 +5,17 @@ library(ggplot2)
 library(RColorBrewer)
 library(readxl)
 
-# set working directory and load data
-setwd("~/Documents/ESPOD/Analyses/Assemb_Binning/MetaSpecies_revision/mags_clustering/")
-dset = read.table("unclass_mags_dist.tab") # takes 10-20 min
-dset_ref = read.csv("mags-clusters.csv")
-meta = read_excel("../tables/SuppInfo_metadata.xlsx")
+# load input
+dset = read.table("unclass_mags_dist.tab") # load mash distance tabular file
+meta = read_excel("SuppInfo_metadata.xlsx") # load excel file with metadata
 
 # carry hclust analysis
 dist.dset = acast(dset, V1~V2, value.var="V3")
 hc = hclust(as.dist(dist.dset))
-memb = cutree(hc, h=0.2) # cut tree at 0.2 MASH distance
+memb = cutree(hc, h=0.2) # cut tree at 0.2 Mash distance
 clusters = unique(memb)
 ngroups = length(clusters)
-cat("Number of unique groups:\n")
+cat("Number of groups:\n")
 print(ngroups)
 
 # write names of bins per cluster into files
@@ -31,7 +29,6 @@ for (i in clusters){
   }
 }
 
-
 # create dset with counts per cluster
 dset_ref = data.frame(matrix(0,ngroups,4))
 dset_ref[,1] = clusters
@@ -43,7 +40,6 @@ for (i in 1:nrow(dset_ref)){
   dset_ref[i,3] = nrow(unique(meta[which(meta$run_accession %in% runs),"sample_accession"]))
   dset_ref[i,4] = length(unique(gsub("_.*","",names(which(memb == dset_ref[i,1])))))
 }
-#write.csv(dset_ref, file="mags-clusters.csv", quote=FALSE, row.names=FALSE)
 
 # check correlation between MAG counts and projects (dset_ref$Projects) or samples (dset$Samples)
 #res = cor.test(log10(dset_ref$MAGs), log10(dset_ref$Projects), method = "pearson")

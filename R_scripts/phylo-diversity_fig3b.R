@@ -3,11 +3,10 @@ library(phytools)
 library(ggplot2)
 
 # load files
-setwd("~/Documents/ESPOD/Analyses/Project_UMGS/MetaSpecies_revision/phylogeny/")
-tre = read.tree("hgr-umgs_phylo/raxml_hgr-umgs_phylogeny.nwk") # load tree
-tax.hgr = read.delim("../taxonomy/taxonomy_hgr.tab", header=FALSE) # load taxonomy file
-tax.umgs = read.delim("../taxonomy/taxonomy_umgs-all.tab", header=FALSE)[1:8] # load taxonomy file
+tre = read.tree("raxml_hgr-umgs_phylogeny.nwk") # load tree
+tax.hgr = read.delim("taxonomy_hgr.tab", header=FALSE) # load taxonomy of HGR genomes
 colnames(tax.hgr) = c("Genome", "Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
+tax.umgs = read.delim("taxonomy_umgs-all.tab", header=FALSE)[1:8] # load taxonomy of UMGS genomes
 colnames(tax.umgs) = c("Genome", "Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
 tax = rbind(tax.hgr, tax.umgs)
 
@@ -56,10 +55,7 @@ print(ggplot(pd.fi, aes(x=Phylum, y=Improvement, fill=Phylum))
       #+ ylab("Proportion of the total phylogenetic diversity\nprovided by the UMGS (%)")
       + guides(fill=FALSE)
       + coord_flip()
-      #+ scale_y_reverse()
       + theme(axis.title.y = element_blank())
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.title.x = element_text(size=14))
-      #+ theme(axis.text.x = element_text(size=15))
-      #+ theme(axis.title.x = element_text(size=18))
       + theme(axis.text.x = element_text(size=12)))

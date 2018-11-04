@@ -1,12 +1,10 @@
 # load libraries
 library(ggplot2)
-setwd("~/Documents/ESPOD/Analyses/Project_UMGS/MetaSpecies_revision/pairwise_aai/")
-options(scipen=999)
 
 # load input
-aai = data.frame(AAI=as.numeric(scan("mean_aais.txt", what="")))
+aai = data.frame(AAI=as.numeric(scan("mean_aais.txt", what=""))) # file with average amino acid identities
 
-# plots
+# plot histogram
 print(ggplot(aai, aes(x=AAI))
       + geom_histogram(bins=50, fill="grey", colour="black", alpha=0.5, size=0.2)
       + theme_bw()
