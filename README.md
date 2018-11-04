@@ -5,7 +5,7 @@ Scripts for characterizing metagenome-assembled genomes (MAGs).
 
 ## mashdiff.sh
 
-Compare genomes against a reference database. Selects best representative for whole-genome alignment.
+Compare genomes against a reference database with Mash. Selects best representative for whole-genome alignment with dnadiff.
 
 <b>Requirements:</b>
 * Mash (tested v2.0)
