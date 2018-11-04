@@ -47,4 +47,4 @@ Compare genomes against a reference database. Selects best representative for wh
 
 ## checkm_assessment.sh
 
-Runs the CheckM lineage_wf with the recommended qa_tree step.
+Runs the CheckM lineage_wf with the recommended qa_tree step for more detailed taxonomic assignment.
