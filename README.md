@@ -24,10 +24,10 @@ Coded for running within LSF cluster environments.
 
 ## checkm_assessment.sh
 
-Runs the CheckM lineage_wf with the recommended qa_tree step for more detailed taxonomic assignment.
+Runs the CheckM <i>lineage_wf</i> with the recommended <i>tree_qa</i> step for more detailed taxonomic assignment.
 
 <b>Requirements:</b>
-* CheckM (tested v1.0.11)
+* CheckM (tested v1.0)
 
 Coded for running within LSF cluster environments. 
 
