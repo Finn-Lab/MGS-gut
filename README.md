@@ -41,8 +41,8 @@ Compare genomes against a reference database. Selects best representative for wh
 > mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 
 <b>Notes:</b>
-- A database file with the target genomes needs to be first generated with <i>mash sketch</i>
-- The output for each genome is a \*db_parsed.tab file containing the dnadiff and Mash results. Column headers in the resultant file are: 
+- A database file with the reference genomes needs to be first generated with <i>mash sketch</i>
+- The output for each query genome is a \*db_parsed.tab file containing the dnadiff and Mash results. Column headers in the resultant file are: 
 > Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
 
 ## checkm_assessment.sh
