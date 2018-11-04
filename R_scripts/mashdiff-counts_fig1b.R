@@ -38,7 +38,7 @@ refseq_match = length(which(dset$refseq_aliquer >= 60 & dset$refseq_ani >= 95))
 hr_refseq = length(which(dset$hr_aliquer >= 60 & dset$hr_ani >= 95
                           & dset$refseq_aliquer >= 60 & dset$refseq_ani >= 95))
 
-# Venn with HR and RefSeq
+# Venn diagram of HR and RefSeq matches
 dev.off()
 draw.pairwise.venn(area1 = hr_match, area2 = refseq_match, cross.area=hr_refseq,
                  category = c("HR", "RefSeq"),
