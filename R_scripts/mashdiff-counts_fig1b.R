@@ -2,7 +2,7 @@
 library(ggplot2)
 library(VennDiagram)
 
-# setup input files and datasets
+# load input
 dset = read.delim("mashdiff_results.tab") # load file with mashdiff results with HR and RefSeq
 
 # add quality score
