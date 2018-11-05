@@ -33,7 +33,7 @@ Query name / Reference name / Ref length / % Ref covered / Query length / % Quer
 
 ## checkm_assessment.sh
 
-Runs the CheckM <i>lineage_wf</i> with the recommended <i>tree_qa</i> step for more detailed taxonomic assignment.
+Runs the CheckM <i>lineage_wf</i> workflow with the recommended <i>tree_qa</i> step for more detailed taxonomic assignment.
 
 <b>Requirements:</b>
 * CheckM (tested v1.0.7-1.0.10)
