@@ -6,10 +6,10 @@ library(RColorBrewer)
 library(CoDaSeq)
 
 # load input
-go.slim = read.delim("go-terms/go-slim_summary.tab", sep="\t", row.names=1, check.names=FALSE)
+go.slim = read.delim("go-slim_summary.tab", sep="\t", row.names=1, check.names=FALSE) # GO slim summary counts
 go.names = go.slim[,1:2]
 go.dset = go.slim[,3:ncol(go.slim)]
-tax = read.delim("taxonomy_all.tab", header = FALSE, row.names=1)
+tax = read.delim("taxonomy_all.tab", header = FALSE, row.names=1) # load taxonomy of HGR and UMGS
 colnames(tax) = c("Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Genome")
 
 # define genomes to analyse
