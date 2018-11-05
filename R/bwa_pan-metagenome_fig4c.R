@@ -9,24 +9,17 @@ library(stats)
 
 # load files
 bwa.prev = read.csv("bwa_presence-absence.csv", row.names=1) # csv file with presence/absence binary matrix
-metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx") # metadata file for each run
-metadata = as.data.frame(metadata.raw[,c("pub_state", "pub_disease", "pub_disease_secondary", "pub_agestrat", 
-                                         "pub_antibio", "country", "continent")])
+metadata.raw = read_excel("metadata.xlsx") # excel file with metadata
+metadata = as.data.frame(metadata.raw[,"continent"])
 rownames(metadata) = metadata.raw$run_accession
-colnames(metadata) = c("disease_state", "disease_name", "disease_secondary", "age", 
-                       "antibio", "country", "continent")
-umgs.hq = scan("../../taxonomy/umgs-hq_genomes.txt", what="")
-umgs.mq = scan("../../taxonomy/umgs-mq_genomes.txt", what="")
-umgs = c(umgs.hq, umgs.mq)
-select = umgs
+colnames(metadata) = "continent"
+
 
 # prepare dataset
-bwa.subs = bwa.prev[select,] # select species
-
 locations = c("Asia", "Africa", "Europe", "North America", "South America", "Oceania")
 for (c in locations) {
   samp.conds = rownames(metadata[which(metadata$continent == c),])
-  samp.cond.analys = bwa.subs[,samp.conds] # select samples
+  samp.cond.analys = bwa.prev[,samp.conds] # select samples
   # subsample in X increments (50 for Asia/North America and Europe, 10 for the rest)
   if (c == "Asia" | c == "North America" | c == "Europe"){
     subsampling = seq(round(ncol(samp.cond.analys)/50),ncol(samp.cond.analys),
