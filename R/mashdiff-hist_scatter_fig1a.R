@@ -9,7 +9,7 @@ dset = read.delim("mashdiff_results.tab") # load file with mashdiff results with
 # add quality score
 dset$checkm_qs = dset$complet-(5*dset$cont)
 
-# filter data
+# filter data (qs and taxon)
 dset = dset[which(dset$checkm_qs > 50),]
 dset = dset[grep("k__Bacteria", dset$taxon),]
 
