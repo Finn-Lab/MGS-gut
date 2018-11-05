@@ -9,7 +9,7 @@ library(grid)
 # load files
 bwa.prev = read.csv("bwa_presence-absence.csv", row.names=1) # csv file with a presence/absence binary matrix
 bwa.counts = read.csv("bwa_counts-unique.csv", row.names=1) # csv file with bwa counts
-metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx") # file with metadata
+metadata.raw = read_excel("metadata.xlsx") # file with metadata
 metadata = as.data.frame(metadata.raw[,c("pub_state", "pub_disease", "pub_disease_secondary", "pub_agestrat", 
                                          "pub_antibio", "country", "continent", "read_count_total")])
 rownames(metadata) = metadata.raw$run_accession
