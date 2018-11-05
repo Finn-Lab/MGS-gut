@@ -29,7 +29,7 @@ mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 Runs the CheckM <i>lineage_wf</i> with the recommended <i>tree_qa</i> step for more detailed taxonomic assignment.
 
 <b>Requirements:</b>
-* CheckM (tested v1.0)
+* CheckM (tested v1.0.7-1.0.10)
 
 Coded for running within LSF cluster environments. 
 
