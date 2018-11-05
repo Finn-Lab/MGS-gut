@@ -78,3 +78,4 @@ Positional arguments:
 * phylo-diversity_fig3b.R : Calculate phylogenetic diversity from a newick tree file.
 * read-class_fig4c.R : Analyse sourmash classification results.
 * taxa_counts_fig2a.R : Stacked plots of taxa proportions.
+* virfinder_analysis.R : Detect viral contigs in FASTA file using VirFinder.
