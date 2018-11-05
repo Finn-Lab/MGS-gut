@@ -37,7 +37,7 @@ Coded for running within LSF cluster environments.
 
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH variable
-- "fa" corresponds to the extension of the FASTA files to be analysed in the genome_folder/
+- "fa" argument corresponds to the extension of the FASTA files to be analysed in the genome_folder/
 - Output is a checkm_parsed.tab file with the taxonomy results from <i>tree_qa</i> combined with the quality scores determined with <i>lineage_wf</i>
 
 ## Analysis and plotting scripts
