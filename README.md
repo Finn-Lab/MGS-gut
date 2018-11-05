@@ -19,7 +19,6 @@ Coded for running within LSF cluster environments.
 mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 ```
 Arguments:  
-
 -i: folder containing the genomes to analyse in FASTA format  
 -r: reference file generated with <i>mash sketch</i>  
 -s: user-defined name for the database (e.g. refseq)  
@@ -28,7 +27,9 @@ Arguments:
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH system variable
 - The output for each query genome is a \*db_parsed.tab file containing the dnadiff and Mash results. Column headers in the resultant file are: 
-> Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
+```
+Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
+```
 
 ## checkm_assessment.sh
 
