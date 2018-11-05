@@ -19,10 +19,11 @@ Coded for running within LSF cluster environments.
 mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 ```
 Arguments:  
--i: folder containing the genomes to analyse in FASTA format  
--r: reference file generated with <i>mash sketch</i>  
--s: user-defined name for the database (e.g. refseq)  
--p: user-defined prefix to label the query genomes in the output (e.g. gut)  
+
+-i : folder containing the genomes to analyse in FASTA format  
+-r : reference file generated with <i>mash sketch</i>  
+-s : user-defined name for the database (e.g. refseq)  
+-p : user-defined prefix to label the query genomes in the output (e.g. gut)  
 
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH system variable
