@@ -57,4 +57,4 @@ bsub -M 5000 -n 8 -J "mash_dist_${bins}" -o ${bins}/mash_dist_${db}.tab "mash di
 
 bsub -o /dev/null -J "bestMash_${bins}" -w "ended(mash_dist_${bins})" "bestMash.py ${bins}/mash_dist_${db}.tab > ${bins}/bestMash_hits_${db}.tab"
 
-bsub -o ${bins}/dnadiff_${db}.log -M 20000 -w "ended(bestMash_${bins})" "dnadiff_multiple.sh ${bins}/bestMash_hits_${db}.tab ${db}; parse_dnadiff_workflow.sh ${bins} _${db} suffix ${prefix}"
+bsub -o ${bins}/dnadiff_${db}.log -M 20000 -w "ended(bestMash_${bins})" "dnadiff_multiple.sh ${bins}/bestMash_hits_${db}.tab ${db}; parse_dnadiff_multiple.sh ${bins} _${db} suffix ${prefix}"
