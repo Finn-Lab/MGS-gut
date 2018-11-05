@@ -40,9 +40,9 @@ colnames(cats.umgs) = c("Name", "Category", "Count")
 cats.hgr = read.delim("antismash_cats_hgrcounts.tab", header=FALSE)
 colnames(cats.hgr) = c("Name", "Category", "Count")
 cats = as.vector(unique(cats.umgs$Category))
-umgs.tax = read.delim("../../taxonomy/taxonomy_umgs-all.tab", header=FALSE)
+umgs.tax = read.delim("taxumgs.tab", header=FALSE)
 colnames(umgs.tax) = c("Name", "Tax", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "UMGS")
-hgr.tax = read.delim("../../taxonomy/taxonomy_hgr.tab", header=FALSE)
+hgr.tax = read.delim("taxhgr.tab", header=FALSE)
 colnames(hgr.tax) = c("Name", "Tax", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
 
 # UMGS
