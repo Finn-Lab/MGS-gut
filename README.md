@@ -1,5 +1,5 @@
-Analysing Metagenomic Species (MGS) from the human gut
-============================================
+Analysis of Metagenomic Species (MGS)
+=====================================
 
 Scripts used for characterizing metagenome-assembled genomes (MAGs).
 
