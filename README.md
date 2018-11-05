@@ -18,9 +18,14 @@ Coded for running within LSF cluster environments.
 ```
 mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 ```
+Arguments:  
+-i: folder containing the genomes to analyse in FASTA format  
+-r: reference file generated with <i>mash sketch</i>  
+-s: user-defined name for the database (e.g. refseq)  
+-p: user-defined prefix to label the query genomes in the output (e.g. gut)  
+
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH system variable
-- A database file with the reference genomes needs to be first generated with <i>mash sketch</i>
 - The output for each query genome is a \*db_parsed.tab file containing the dnadiff and Mash results. Column headers in the resultant file are: 
 > Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
 
@@ -37,6 +42,11 @@ Coded for running within LSF cluster environments.
 ```
 checkm_assessment.sh genome_folder/ fa output_prefix
 ```
+Positional arguments:
+1. folder containing the genomes to analyse in FASTA format
+2. extension of the FASTA files to be analysed in the genome_folder/
+3. user-defined prefix to label the query genomes in the output (e.g. gut)
+
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH system variable
 - "fa" argument corresponds to the extension of the FASTA files to be analysed in the genome_folder/
