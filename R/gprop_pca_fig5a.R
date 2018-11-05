@@ -86,7 +86,7 @@ print(ggplot(gg.dset, aes(x=PC1, y=PC2, colour=Phylum, shape=Genome))
       + theme(axis.title.x = element_text(size=14))
       + theme(axis.text.x = element_text(size=12)))
 
-# calculate anosim for all by phylum
+# perform anosim test by phylum
 dset.anosim = dset.tax[which(!is.na(dset.tax$Phylum)),]
 rownames(dset.anosim) = dset.anosim$Row.names
 dset.anosim = dset.anosim[,2:1200]
