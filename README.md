@@ -45,6 +45,7 @@ Coded for running within LSF cluster environments.
 <b>scripts/</b>
 * concat2tree.py: Concatenate protein sequence alignments and build tree with either RAxML or FastTree.
 * count_taxa.py: Take a taxonomy.tab file and count the number of genomes per taxon.
+* ... remaining scripts are part of mashdiff.sh and checkm_assessment.sh pipelines
 
 <b>R/</b>
 * aai-cogs_extfig4c.R: Assess distribution of average amino acid identities between marker genes.
