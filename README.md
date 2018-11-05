@@ -53,7 +53,7 @@ Positional arguments:
 - The scripts/ directory needs to be part of your $PATH system variable
 - Output is a checkm_parsed.tab file with the taxonomy results from <i>tree_qa</i> combined with the quality scores determined with <i>lineage_wf</i>
 
-## Analysis and plotting scripts
+## Other analysis and plotting scripts
 
 <b>scripts/</b>
 * concat2tree.py: Concatenate protein sequence alignments and build tree with either RAxML or FastTree.
