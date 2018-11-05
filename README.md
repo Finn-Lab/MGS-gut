@@ -18,6 +18,7 @@ Coded for running within LSF cluster environments.
 > mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 
 <b>Notes:</b>
+- The scripts/ directory needs to be part of your $PATH variable
 - A database file with the reference genomes needs to be first generated with <i>mash sketch</i>
 - The output for each query genome is a \*db_parsed.tab file containing the dnadiff and Mash results. Column headers in the resultant file are: 
 > Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
@@ -31,8 +32,21 @@ Runs the CheckM <i>lineage_wf</i> with the recommended <i>tree_qa</i> step for m
 
 Coded for running within LSF cluster environments. 
 
+<b>Usage:</b>
+> checkm_assessment.sh genome_folder/ fa output_prefix
+
+<b>Notes:</b>
+- The scripts/ directory needs to be part of your $PATH variable
+- "fa" corresponds to the extension of the FASTA files to be analysed in the genome_folder/
+- Output is a checkm_parsed.tab file with the taxonomy results from <i>tree_qa</i> combined with the quality scores determined with <i>lineage_wf</i>
+
 ## Analysis and plotting scripts
 
+<b>scripts/</b>
+* concat2tree.py: Concatenate protein sequence alignments and build tree with either RAxML or FastTree.
+* count_taxa.py: Take a taxonomy.tab file and count the number of genomes per taxon.
+
+<b>R/</b>
 * aai-cogs_extfig4c.R: Assess distribution of average amino acid identities between marker genes.
 * antismash_extfig7.R: Plot counts of biosynthetic gene clusters (BGCs) calculated with antiSMASH.
 * bwa_geo-prevalence_fig4a.R: Characterize geographic distribution of MGS.
