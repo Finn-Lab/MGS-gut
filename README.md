@@ -1,7 +1,7 @@
 Analysing Metagenomic Species (MGS) from the human gut
 ============================================
 
-Scripts for characterizing metagenome-assembled genomes (MAGs).
+Scripts used for characterizing metagenome-assembled genomes (MAGs).
 
 ## mashdiff.sh
 
