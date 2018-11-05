@@ -7,7 +7,7 @@ library(readxl)
 
 # load input
 dset = read.table("unclass_mags_dist.tab") # load mash distance tabular file
-meta = read_excel("SuppInfo_metadata.xlsx") # load excel file with metadata
+meta = read_excel("metadata.xlsx") # load excel file with metadata
 
 # carry hclust analysis
 dist.dset = acast(dset, V1~V2, value.var="V3")
