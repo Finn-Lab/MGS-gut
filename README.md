@@ -15,8 +15,9 @@ Compare a set of genomes against a reference database. Selects best representati
 Coded for running within LSF cluster environments. 
 
 <b>Usage:</b> 
-> mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
-
+```
+mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
+```
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH variable
 - A database file with the reference genomes needs to be first generated with <i>mash sketch</i>
@@ -33,8 +34,9 @@ Runs the CheckM <i>lineage_wf</i> with the recommended <i>tree_qa</i> step for m
 Coded for running within LSF cluster environments. 
 
 <b>Usage:</b>
-> checkm_assessment.sh genome_folder/ fa output_prefix
-
+```
+checkm_assessment.sh genome_folder/ fa output_prefix
+```
 <b>Notes:</b>
 - The scripts/ directory needs to be part of your $PATH variable
 - "fa" argument corresponds to the extension of the FASTA files to be analysed in the genome_folder/
