@@ -25,8 +25,8 @@ Arguments:
 -p: user-defined prefix to label the query genomes in the output (e.g. gut)  
 
 <b>Notes:</b>
-- The scripts/ directory needs to be part of your $PATH system variable
-- The output for each query genome is a `*db_parsed.tab` file containing the dnadiff and Mash results. Column headers in the resultant file are: 
+- The `scripts/` directory needs to be part of your `$PATH` system variable
+- The output for each query genome is a `*dbname_parsed.tab` file containing the dnadiff and Mash results. Column headers in the resultant file are: 
 ```
 Query name / Reference name / Ref length / % Ref covered / Query length / % Query aligned / ANI / Mash distance
 ```
@@ -50,7 +50,7 @@ Positional arguments:
 3: user-defined prefix to label the query genomes in the output (e.g. gut)  
 
 <b>Notes:</b>
-- The scripts/ directory needs to be part of your $PATH system variable
+- The `scripts/` directory needs to be part of your `$PATH` system variable
 - Output is a `checkm_parsed.tab` file with the taxonomy results from <i>tree_qa</i> combined with the quality scores determined with <i>lineage_wf</i>
 
 ## Other analysis and plotting scripts
