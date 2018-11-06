@@ -45,7 +45,7 @@ Coded for running within LSF cluster environments.
 checkm_assessment.sh genome_folder/ fa output_prefix
 ```
 Positional arguments:  
-1: folder containing the genomes to analyse in FASTA format  
+1: folder containing the genomes to analyse in FASTA format with `.fa` extension.
 2: extension of the FASTA files to be analysed in the `genome_folder/`  
 3: user-defined prefix to label the query genomes in the output (e.g. gut)  
 
