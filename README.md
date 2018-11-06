@@ -20,7 +20,7 @@ mashdiff.sh -i genome_folder/ -r reference.msh -s db_name -p output_prefix
 ```
 Arguments:  
 -i: folder containing the genomes to analyse in FASTA format  
--r: reference file generated with <i>mash sketch</i>  
+-r: reference file `.msh` generated with `mash sketch`  
 -s: user-defined name for the database (e.g. refseq)  
 -p: user-defined prefix to label the query genomes in the output (e.g. gut)  
 
@@ -33,7 +33,7 @@ Query name / Reference name / Ref length / % Ref covered / Query length / % Quer
 
 ## checkm_assessment.sh
 
-Runs the CheckM <i>lineage_wf</i> workflow with the recommended <i>tree_qa</i> step for more detailed taxonomic assignment.
+Runs the CheckM `lineage_wf` workflow with the recommended `tree_qa` step for more detailed taxonomic assignment.
 
 <b>Requirements:</b>
 * CheckM (tested v1.0.7-1.0.10)
@@ -46,12 +46,12 @@ checkm_assessment.sh genome_folder/ fa output_prefix
 ```
 Positional arguments:  
 1: folder containing the genomes to analyse in FASTA format  
-2: extension of the FASTA files to be analysed in the genome_folder/  
+2: extension of the FASTA files to be analysed in the `genome_folder/`  
 3: user-defined prefix to label the query genomes in the output (e.g. gut)  
 
 <b>Notes:</b>
 - The `scripts/` directory needs to be part of your `$PATH` system variable
-- Output is a `checkm_parsed.tab` file with the taxonomy results from <i>tree_qa</i> combined with the quality scores determined with <i>lineage_wf</i>
+- Output is a `checkm_parsed.tab` file with the taxonomy results from `tree_qa` combined with the quality scores determined with `lineage_wf`
 
 ## Other analysis and plotting scripts
 
