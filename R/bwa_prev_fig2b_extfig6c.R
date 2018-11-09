@@ -14,15 +14,6 @@ tax.id = data.frame(rbind(tax.umgs.hq, tax.umgs.mq))
 colnames(tax.id) = c("Genome", "Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "MGS")
 umgs.genomes = as.vector(tax.id$Genome)
 
-# load metadata
-metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx") # excel file with metadata
-metadata = as.data.frame(metadata.raw[,c("secondary_study_accession","pub_state", "pub_disease", 
-                                         "pub_disease_secondary", "pub_agestrat", 
-                                         "pub_antibio", "country", "continent")])
-rownames(metadata) = metadata.raw$run_accession
-colnames(metadata) = c("study_accession", "disease_state", "disease_name", "disease_secondary", "age", 
-                       "antibio", "country", "continent")
-
 # counts per MGS
 prev = as.data.frame(rowSums(bwa.prev))
 prev.total = data.frame(Genome=rownames(prev), Counts=as.numeric(prev[,1]))
