@@ -10,11 +10,9 @@ library(grid)
 bwa.prev = read.csv("bwa_presence-absence.csv", row.names=1) # csv file with a presence/absence binary matrix
 bwa.counts = read.csv("bwa_counts-unique.csv", row.names=1) # csv file with bwa counts
 metadata.raw = read_excel("metadata.xlsx") # file with metadata
-metadata = as.data.frame(metadata.raw[,c("pub_state", "pub_disease", "pub_disease_secondary", "pub_agestrat", 
-                                         "pub_antibio", "country", "continent", "read_count_total")])
+metadata = as.data.frame(metadata.raw[,c("continent", "read_count_total")])
 rownames(metadata) = metadata.raw$run_accession
-colnames(metadata) = c("disease_state", "disease_name", "disease_secondary", "age", 
-                       "antibio", "country", "continent", "read_count")
+colnames(metadata) = c("continent", "read_count")
 
 # create dataset
 dset = data.frame(Species=rownames(bwa.prev), Prev_Past=0, Prop=0, Abund=0, Continent=NA)
