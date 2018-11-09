@@ -7,23 +7,21 @@ library(RColorBrewer)
 
 # load data
 sm.dset = read.csv("sourmash_classification.csv", check.names=FALSE, row.names=1) # load sourmash results
-metadata.raw = read_excel("../../tables/SuppInfo_metadata.xlsx") # load excel file with metadata
-metadata = as.data.frame(metadata.raw[,c("pub_state", "pub_disease", "pub_disease_secondary", "pub_agestrat", 
-                                         "pub_antibio", "country", "continent")])
+metadata.raw = read_excel("metadata.xlsx") # load excel file with metadata
+metadata = as.data.frame(metadata.raw[,"continent"])
 rownames(metadata) = metadata.raw$run_accession
-colnames(metadata) = c("Disease_state", "Disease_name", "Disease_secondary", "Age", 
-                       "Antibio", "Country", "Continent")
+colnames(metadata) = "continent"
 
 # format datasets
 dset = merge(sm.dset, metadata, by="row.names")
 rownames(dset) = dset$Row.names
-dset = dset[,c("HR", "+ RefSeq", "+ UMGS", "Continent")]
+dset = dset[,c("HR", "+ RefSeq", "+ UMGS", "continent")]
 dset$Improv = (dset$`+ UMGS`-dset$`+ RefSeq`)/dset$`+ RefSeq`*100
 
 # plot boxplot of read assignment %
 dset.box.all = melt(dset)
 
-plot = print(ggplot(dset, aes(x=Continent, y=Improv, fill=Continent)) # by continent
+plot = print(ggplot(dset, aes(x=Continent, y=Improv, fill=continent)) # by continent
              + geom_boxplot(alpha=0.5, width=0.4, outlier.colour=NA, colour="black")
              + theme_bw()
              + scale_x_discrete(limits=rev(c("North America","Asia", "Europe", "Oceania", "South America", "Africa")))
