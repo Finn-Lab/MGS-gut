@@ -53,6 +53,29 @@ Positional arguments:
 - The `scripts/` directory needs to be part of your `$PATH` system variable
 - Output is a `checkm_parsed.tab` file with the taxonomy results from `tree_qa` combined with the quality scores determined with `lineage_wf`
 
+## map2ref.sh
+
+Map metagenomic reads against a genome database using BWA.
+
+<b>Requirements:</b>
+* BWA (tested v0.7.16a-r1181)
+* Samtools (tested v1.5)
+
+Coded for running within LSF cluster environments. 
+
+<b>Usage:</b>
+```
+map2ref.sh input_1.fastq(gz) input_2.fastq(gz) ref-db.fasta out_prefix
+```
+Positional arguments:  
+1 and 2: Forward and reverse reads of metagenome to query (fastq or fastq.gz)  
+2: Genome database indexed with `bwa index`, where FASTA headers are in the following structure: `>genome-name_1...`  
+3: user-defined output prefix to save output files (e.g. results/metagenome1) 
+
+<b>Notes:</b>
+- The `scripts/` directory needs to be part of your `$PATH` system variable
+- Results will be stored in the `out_prefix_ref-db_total.tab` and `out_prefix_ref-db_unique.tab` files. The former contains the counts/coverage/depth/variation for all reads mapped per genome, while the latter only takes into account the uniquely mapped reads.
+
 ## Other analysis and plotting scripts
 
 <b>scripts/</b>
