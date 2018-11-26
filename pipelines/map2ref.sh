@@ -38,6 +38,6 @@ bsub -M 10000 -o ${outprefix}_${refix}_mapping.log  -J depth-unique_${readname}_
 
 # extract total counts
 bsub -n 8 -o ${outprefix}_${refix}_mapping.log  -J index_${readname}_${refix} -w "ended(sort_${readname}_${refix})" \
-"samtools index -@ 7 ${outprefix}_${refix}.bam"
+"samtools index -@ 7 ${outprefix}_${refix}_sorted.bam"
 bsub -M 10000 -o ${outprefix}_${refix}_mapping.log  -J depth_${readname}_${refix} -w "ended(index_${readname}_${refix})" \
 "samtools idxstats ${outprefix}_${refix}_sorted.bam > ${outprefix}_${refix}_depth.tab; samtools depth ${outprefix}_${refix}_sorted.bam > ${outprefix}_${refix}_depth-pos.tab; parse_bwa-depth.py ${outprefix}_${refix}_depth.tab ${outprefix}_${refix}_depth-pos.tab > ${outprefix}_${refix}_total.tab; rm -rf ${outprefix}_${refix}_unsorted.bam ${outprefix}_${refix}_sorted.bam.bai ${outprefix}_${refix}_depth*"
