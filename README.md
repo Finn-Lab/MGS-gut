@@ -96,7 +96,7 @@ Positional arguments:
 * `kegg-cats_extfig8b.R` : Calculate proportion of KEGG functions differentially abundant.
 * `mags-cluster_extfig4.R` : Cluster MAGs based on Mash distances.
 * `mags-quality_extfig2.R` : Plot CheckM quality scores.
-* `mashdiff-counts_fig1b.R` : Evaluate mashdiff results.
+* `mashdiff-counts_fig1b.R` : Evaluate mashdiff results in terms of total reference matches.
 * `mashdiff-hist_scatter_fig1a.R` : Scatterplots and histograms to visualize mashdiff results.
 * `mgs-quality_extfig5.R` : Evaluate MGS quality scores.
 * `phylo-diversity_fig3b.R` : Calculate phylogenetic diversity from a newick tree file.
