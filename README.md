@@ -37,6 +37,7 @@ Runs the CheckM `lineage_wf` workflow with the recommended `tree_qa` step for mo
 
 <b>Requirements:</b>
 * CheckM (tested v1.0.7-1.0.10)
+* Python 2.7
 
 Coded for running within LSF cluster environments. 
 
@@ -60,6 +61,7 @@ Map metagenomic reads against a genome database using BWA.
 <b>Requirements:</b>
 * BWA (tested v0.7.16a-r1181)
 * Samtools (tested v1.5)
+* Python 2.7
 
 Coded for running within LSF cluster environments. 
 
