@@ -27,7 +27,7 @@ with open(sys.argv[1], "rU") as f:
         line = line.strip("\n")
         cols = line.split("\t")
         if cols[0] != "Bin Id":
-            name = "%s%s" % (pref, cols[0])
+            name = cols[0]
             complet = float(cols[11])
             cont = float(cols[12])
             heter = float(cols[13])
@@ -38,7 +38,7 @@ with open(sys.argv[2], "rU") as f:
         line = line.strip("\n")
         cols = line.split("\t")
         if cols[0] != "Bin Id":
-            name = "%s%s" % (pref, cols[0])
+            name = cols[0]
             taxa = cols[3]
             try:
                 bins[name].append(taxa)
