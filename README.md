@@ -87,20 +87,19 @@ Positional arguments:
 * ... remaining scripts are part of the `mashdiff.sh`, `checkm_assessment.sh` and `map2ref.sh` pipelines.
 
 <b>R/</b>
-* `aai-cogs_extfig4c.R` : Assess distribution of average amino acid identities between marker genes.
-* `antismash_extfig7.R` : Plot counts of biosynthetic gene clusters (BGCs) calculated with antiSMASH.
+* `antismash_extfig8.R` : Plot counts of biosynthetic gene clusters (BGCs) calculated with antiSMASH.
 * `bwa_geo-prevalence_fig4a.R` : Characterize geographic distribution of MGS.
 * `bwa_pan-metagenome_fig4d.R` : Build accumulation curve of the number of species as a function of samples.
-* `bwa_prev_fig2b_extfig6c.R` : Determine overall prevalence of MGS.
-* `bwa_thresholds_extfig6.R` : Define thresholds for species presence/absence based on BWA results.
+* `bwa_prev_fig2b_extfig7c.R` : Determine overall prevalence of MGS.
+* `bwa_thresholds_extfig7.R` : Define thresholds for species presence/absence based on BWA results.
 * `funcs_phy-assoc_fig5b.R` : Find functions (GO slim terms) differentially abundant between two sets of species.
 * `gprop_pca_fig5a.R` : Perform Principal Component Analysis (PCA) using Genome Properties.
-* `kegg-cats_extfig8b.R` : Calculate proportion of KEGG functions differentially abundant.
-* `mags-cluster_extfig4.R` : Cluster MAGs based on Mash distances.
+* `kegg-cats_extfig9b.R` : Calculate proportion of KEGG functions differentially abundant.
+* `mags-cluster_extfig5.R` : Cluster MAGs based on Mash distances.
 * `mags-quality_extfig2.R` : Plot CheckM quality scores.
 * `mashdiff-counts_fig1b.R` : Evaluate mashdiff results in terms of total reference matches.
 * `mashdiff-hist_scatter_fig1a.R` : Scatterplots and histograms to visualize mashdiff results.
-* `mgs-quality_extfig5.R` : Evaluate MGS quality scores.
+* `mgs-quality_extfig6.R` : Evaluate MGS quality scores.
 * `phylo-diversity_fig3b.R` : Calculate phylogenetic diversity from a newick tree file.
 * `read-class_fig4c.R` : Analyse sourmash classification results.
 * `taxa_counts_fig2a.R` : Stacked plots of taxa proportions.
