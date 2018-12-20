@@ -82,7 +82,7 @@ Positional arguments:
 
 <b>scripts/</b>
 * `concat2tree.py`: Concatenate protein sequence alignments and build tree with either RAxML or FastTree.
-* `count_taxa.py`: Take a taxonomy.tab file and count the number of genomes per taxon.
+* `count_taxa.py`: Take a taxonomy tabular file and count the number of genomes per taxon.
 * `rename_multifasta_prefix.py`: Rename a multi-fasta file based on a user-defined prefix.
 * ... remaining scripts are part of the `mashdiff.sh`, `checkm_assessment.sh` and `map2ref.sh` pipelines.
 
