@@ -6,11 +6,8 @@ library(RColorBrewer)
 library(FactoMineR)
 library(CoDaSeq)
 
-# set working directory and read input files
-kegg.dset = read.csv("kegg/kegg_summary.csv", row.names=1, check.names=FALSE)
+# load input files (kegg names and results per phylum)
 kegg.names = read.delim("kegg/KEGG_orthology_simple.tab", sep="\t", row.names=1, check.names=FALSE, quote="")
-
-# load kegg results per phylum
 actino = read.csv("kegg/actino_kegg_results.csv", row.names=1)
 actino = merge(actino, kegg.names, by="row.names")
 firm = read.csv("kegg/firm_kegg_results.csv", row.names=1)
