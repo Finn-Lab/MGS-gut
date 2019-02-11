@@ -1,7 +1,9 @@
 Analysis of Metagenomic Species (MGS)
 =====================================
 
-Scripts used for characterizing metagenome-assembled genomes (MAGs).
+Scripts used for characterizing metagenome-assembled genomes (MAGs) used in the following publication:
+
+A Almeida, AL Mitchell, M Boland, SC Forster, GB Gloor, A Tarkowska, TD Lawley and RD Finn (2019) [A new genomic blueprint of the human gut microbiota](https://www.nature.com/articles/s41586-019-0965-1). <i>Nature</i>
 
 ## mashdiff.sh
 
