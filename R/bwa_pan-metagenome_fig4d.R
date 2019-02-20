@@ -56,7 +56,7 @@ dset.nea = dset.line[which(dset.line$Origin != "North America" & dset.line$Origi
                            & dset.line$Origin != "Asia"),] # just NEA
 
 # plot graph with asymptotic regression
-print(ggplot(dset.nea, aes(x=Samples, y=Species, colour=Origin))
+print(ggplot(dset.line, aes(x=Samples, y=Species, colour=Origin))
       + geom_smooth(method="nls", formula=y~SSasymp(x, Asym, R0, lrc), se=F, size=0.35)
       + geom_point(size=0.2)
       + theme_bw()
