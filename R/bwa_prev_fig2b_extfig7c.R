@@ -23,7 +23,7 @@ prev.umgs.top = prev.umgs.top[1:20,]
 prev.umgs.top = merge(prev.umgs.top, tax.id, by="Genome")
 prev.umgs.top = prev.umgs.top[order(prev.umgs.top$Counts, decreasing=TRUE),]
 
-# plot bargraph of counts per ref genome for iTOL
+# plot bargraph of counts per ref genome
 color_class = c(Actinobacteria= "#09e516", Alphaproteobacteria= "#1d7b37", Bacilli= "#CB1414", Bacteroidia= "#CB7014",
                 Betaproteobacteria= "#ffc1f6", Clostridia= "#6992d8", Coriobacteriia= "#C30EAD", Deltaproteobacteria= "#7a4e82",
                 Epsilonproteobacteria= "#003ea7", Erysipelotrichia= "#6b552b", Flavobacteriia= "#0ba306", Fusobacteriia= "#C3C00E",
