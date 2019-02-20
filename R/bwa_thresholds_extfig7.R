@@ -35,7 +35,9 @@ print(ggplot(dset, aes(x=Cov, y=CovScore))
       + theme(axis.text.x = element_text(size=12)))
 
 # define presence/absence and save matrix to csv file
-bwa.thresh = bwa.cov
+bwa.thresh = data.frame(matrix(0,nrow(bwa.cov),ncol(bwa.cov)))
+rownames(bwa.thresh) = rownames(bwa.cov)
+colnames(bwa.thresh) = colnames(bwa.cov)
 bwa.thresh[bwa.cov >= 60 & 
              bwa.coeffscore < quantile(coeffscore, 0.99) & 
              bwa.covscore < quantile(covscore, 0.99)] = 1
