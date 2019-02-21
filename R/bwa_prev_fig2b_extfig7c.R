@@ -43,14 +43,11 @@ print(ggplot(prev.umgs.top, aes(x=Genome, y=Counts, fill=Class))
 
 # analyse distribution
 prev.total = rbind(prev.umgs, prev.hgr)
-print(ggplot(prev.total, aes(x=Counts, fill=Type)) 
-      + geom_histogram(colour="black", alpha=0.5, size = 0.1, bins=100)
+print(ggplot(prev.total, aes(x=Counts)) 
+      + geom_histogram(colour="black", fill="steelblue",alpha=0.5, size = 0.1, bins=100)
       + theme_bw()
       + ylab("Number of UMGS")
       + xlab("Number of samples")
-      #+ xlim(0,100) zoom on x-axis
-      #+ ylim(0,50) zoom on y-axis
-      + scale_fill_manual(values=c("darkgreen", "steelblue"))
       + theme(axis.title.y = element_text(size=12))
       + theme(axis.text.y = element_text(size=12))
       + theme(axis.title.x = element_text(size=12))
