@@ -42,8 +42,7 @@ print(ggplot(prev.umgs.top, aes(x=Genome, y=Counts, fill=Class))
       + theme(axis.title.x = element_blank()))
 
 # analyse distribution
-prev.total = rbind(prev.umgs, prev.hgr)
-print(ggplot(prev.total, aes(x=Counts)) 
+print(ggplot(prev.umgs, aes(x=Counts)) 
       + geom_histogram(colour="black", fill="steelblue",alpha=0.5, size = 0.1, bins=100)
       + theme_bw()
       + ylab("Number of UMGS")
