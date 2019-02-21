@@ -62,7 +62,6 @@ colnames(bwa.thresh) = colnames(bwa.cov)
 bwa.thresh[bwa.cov >= 60 & 
              bwa.coeffscore < quantile(coeffscore, 0.99) & 
              bwa.covscore < quantile(covscore, 0.99)] = 1
-bwa.thresh[bwa.thresh != 1] = 0
 
 # save output files
 cat("Saving files...\n")
