@@ -16,7 +16,7 @@ rownames(metadata) = metadata.raw$run_accession
 colnames(metadata) = c("read_count", "continent")
 
 # calculate relative abundance and choose dataset for accumulation curve
-thresh = 0.01
+thresh = 0.01 # recommend between 0.01 and 0.1 (too many false positives below 0.01)
 rel.ab = t(t(bwa.counts)/metadata$read_count*100)
 rel.ab[rel.ab <= thresh] = 0
 rel.ab[rel.ab != 0] = 1
