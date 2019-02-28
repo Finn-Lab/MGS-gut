@@ -9,18 +9,12 @@ library(stats)
 
 # load files
 bwa.pres = read.csv("bwa_presence-absence.csv", row.names=1) # csv file with presence/absence binary matrix
-bwa.counts = read.csv("bwa_counts-unique.csv", row.names=1) # csv file with unique read counts
 metadata.raw = read_excel("metadata.xlsx") # excel file with metadata
 metadata = as.data.frame(metadata.raw[,c("read_count_total", "continent"])
 rownames(metadata) = metadata.raw$run_accession
 colnames(metadata) = c("read_count", "continent")
-
-# calculate relative abundance and choose dataset for accumulation curve
-thresh = 0.01 # recommend between 0.01 and 0.1 (too many false positives below 0.01)
-rel.ab = t(t(bwa.counts)/metadata$read_count*100)
-rel.ab[rel.ab <= thresh] = 0
-rel.ab[rel.ab != 0] = 1
-bwa.prev = rel.ab # choose dataset (either rel.ab or bwa.pres)
+umgs = rownames(bwa.prev)[which(grepl("bin",rownames(bwa.prev)))]
+bwa.prev = bwa.prev[umgs,] # select only UMGS genomes
 
 # prepare dataset
 locations = c("Asia", "Africa", "Europe", "North America", "South America", "Oceania")
