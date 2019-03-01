@@ -1,9 +1,6 @@
-# merge multiple csv files
-library(dplyr)
-library(readr)
+# load libraries
 library(ggplot2)
 library(ggrastr)
-library(rpgm)
 
 # load files
 bwa.depth = read.csv("bwa_depth.csv", row.names=1)
