@@ -93,7 +93,7 @@ Positional arguments:
 * `bwa_geo-prevalence_fig4a.R` : Characterize geographic distribution of MGS.
 * `bwa_pan-metagenome_fig4d.R` : Build accumulation curve of the number of species as a function of samples.
 * `bwa_prev_fig2b_extfig7c.R` : Determine overall prevalence of MGS.
-* `bwa_thresholds.R` : Define thresholds for species presence/absence based on BWA results.
+* `bwa_thresholds_extfig7.R` : Define thresholds for species presence/absence based on BWA results.
 * `funcs_phy-assoc_fig5b.R` : Find functions (GO slim terms) differentially abundant between two sets of species.
 * `gprop_pca_fig5a.R` : Perform Principal Component Analysis (PCA) using Genome Properties.
 * `kegg-cats_extfig9b.R` : Calculate proportion of KEGG functions differentially abundant.
