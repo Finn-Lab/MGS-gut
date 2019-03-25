@@ -1,5 +1,6 @@
 # load libraries
 library(ggplot2)
+library(ggrastr)
 library(reshape2)
 
 # load input
