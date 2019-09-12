@@ -5,7 +5,7 @@ Scripts used for characterizing metagenome-assembled genomes (MAGs) used in the 
 
 A Almeida, AL Mitchell, M Boland, SC Forster, GB Gloor, A Tarkowska, TD Lawley and RD Finn (2019) [A new genomic blueprint of the human gut microbiota](https://www.nature.com/articles/s41586-019-0965-1). <i>Nature</i> <b>568</b>, 499–504
 
-Associated data can also be found in: ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/umgs_analyses/
+Associated data can also be found in: [ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/umgs_analyses/](ftp://ftp.ebi.ac.uk/pub/databases/metagenomics/umgs_analyses/)
 
 ## mashdiff.sh
 
