@@ -4,11 +4,11 @@ library(ggplot2)
 
 # load files
 tre = read.tree("raxml_hgr-umgs_phylogeny.nwk") # load tree
-tax.hgr = read.delim("taxhgr.tab", header=FALSE) # load taxonomy of HGR genomes
-colnames(tax.hgr) = c("Genome", "Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
-tax.umgs = read.delim("taxumgs.tab", header=FALSE)[1:8] # load taxonomy of UMGS genomes
-colnames(tax.umgs) = c("Genome", "Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus")
-tax = rbind(tax.hgr, tax.umgs)
+tax.hgr = read.delim("taxonomy_hgr.tab") # load taxonomy of HGR genomes
+colnames(tax.hgr) = c("Genome", "Phylum", "Class", "Order", "Family", "Genus")
+tax.umgs = read.delim("taxonomy_umgs.tab") # load taxonomy of UMGS genomes
+colnames(tax.umgs) = c("UMGS_ID", "Genome", "Phylum", "Class", "Order", "Family", "Genus")
+tax = rbind(tax.hgr, tax.umgs[,2:ncol(tax.umgs)])
 
 # prepare file
 all.phyla = c(as.vector(tax.hgr$Phylum), as.vector(tax.umgs$Phylum))
