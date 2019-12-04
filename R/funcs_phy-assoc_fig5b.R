@@ -1,22 +1,20 @@
 # load library
 library(ALDEx2)
 library(ggplot2)
-library(reshape2)
 library(RColorBrewer)
-library(CoDaSeq)
 
 # load input
 go.slim = read.delim("go-slim_summary.tab", sep="\t", row.names=1, check.names=FALSE) # GO slim summary counts
 go.names = go.slim[,1:2]
 go.dset = go.slim[,3:ncol(go.slim)]
-tax = read.delim("taxonomy_all.tab", header = FALSE, row.names=1) # load taxonomy of HGR and UMGS
-colnames(tax) = c("Name", "Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Genome")
+tax.hgr = read.delim("taxonomy_hgr.tab", row.names=1) # taxonomy file of HGR species
+tax.umgs = read.delim("taxonomy_umgs.tab", row.names=1) # taxonomy file of UMGS species
+rownames(tax.umgs) = tax.umgs$MAG_ID
 
 # define genomes to analyse
 phylum = "Firmicutes"
-phy.selected = tax[which(tax$Phylum == phylum),]
-hgr.genomes = rownames(phy.selected)[which(phy.selected$Genome == "HGR")]
-umgs.genomes = rownames(phy.selected)[which(phy.selected$Genome == "UMGS")]
+hgr.genomes = rownames(tax.hgr)[which(tax.hgr$Phylum == phylum)]
+umgs.genomes = rownames(tax.umgs)[which(tax.umgs$Phylum == phylum)]
 
 # prepare dataset
 analy.dset = go.dset[,c(hgr.genomes, umgs.genomes)]
@@ -26,7 +24,7 @@ analy.conds = c(rep("HGR",length(hgr.genomes)),rep("UMGS", length(umgs.genomes))
 # perform aldex analysis
 aldex.analy = aldex.clr(reads=analy.dset, conds=analy.conds, mc.samples=128)
 aldex.eff = aldex.effect(aldex.analy, analy.conds, useMC=TRUE)
-aldex.res = aldex.ttest(aldex.analy, analy.conds)
+aldex.res = aldex.ttest(aldex.analy)
 res.all = data.frame(rownames(aldex.eff), aldex.eff,aldex.res)
 
 # summarize results and get most significant
