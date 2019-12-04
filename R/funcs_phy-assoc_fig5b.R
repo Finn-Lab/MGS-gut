@@ -23,7 +23,7 @@ analy.conds = c(rep("HGR",length(hgr.genomes)),rep("UMGS", length(umgs.genomes))
 
 # perform aldex analysis
 aldex.analy = aldex.clr(reads=analy.dset, conds=analy.conds, mc.samples=128)
-aldex.eff = aldex.effect(aldex.analy, analy.conds, useMC=TRUE)
+aldex.eff = aldex.effect(aldex.analy, useMC=TRUE)
 aldex.res = aldex.ttest(aldex.analy)
 res.all = data.frame(rownames(aldex.eff), aldex.eff,aldex.res)
 
@@ -39,7 +39,7 @@ res.bot = res.plot[order(res.plot$effect, decreasing=FALSE)[1:5],]
 res.best = rbind(res.top, res.bot)
 res.fi = res.best[order(res.best$effect, decreasing=TRUE),]
 print(ggplot(res.fi, aes(x=Function_specific, y=effect, fill=Function_general))
-      + geom_bar(stat="identity", alpha=0.8, size=0.4, alpha=0.8)
+      + geom_bar(stat="identity", alpha=0.8, size=0.4)
       + theme_bw()
       + coord_flip()
       + theme(plot.title = element_text(hjust = 0.5))
